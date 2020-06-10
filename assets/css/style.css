@@ -13,3 +13,10 @@ p{
 
 }
 
+.mainElement{
+    display: block;
+}
+
+#timer{
+    float: right;
+}
