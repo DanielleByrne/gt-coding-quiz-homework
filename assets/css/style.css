@@ -4,6 +4,11 @@ margin: auto;
 padding: 50px;
 }
 
-.timer{
-    text-align: right;
+p{
+    text-align: center;
+    margin-left: 100;
+    margin-right: 100;
+    padding-left:100px;
+    padding-right:100px;
+
 }

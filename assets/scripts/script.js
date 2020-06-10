@@ -10,4 +10,26 @@
 // WHEN the game is over
 // THEN I can save my initials and score
 
-// need
+// variables I need 
+var headingEl = document.getElementById("heading");
+var timerEl = document.getElementById ("timer");
+var secondsLeft = 60;
+
+// calling variables and setting them 
+headingEl.textContent = "Coding Quiz Challenge"
+
+// timer
+function countdownTimer (){
+    var timerInterval = setInterval(function(){
+        secondsLeft--;
+        timerEl.textContent = "Time: " + secondsLeft;
+
+        if (secondsLeft === 0){
+            clearInterval(timerInterval);
+            console.log ("times up");
+            // this will end the timer and bring us to the all done page 
+        }
+    }, 1000);
+}
+
+countdownTimer();
