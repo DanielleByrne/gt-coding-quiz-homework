@@ -16,7 +16,13 @@ var pEl = document.getElementById("mainParagraph");
 var timerEl = document.getElementById("timer");
 var secondsLeft = 60;
 var startButtonEl = document.getElementById("startButton");
-var mainEl= document.getElementById ("mainElement")
+var mainEl= document.getElementById ("mainElement");
+var answer1El = document.getElementById("answer1");
+var answer2El = document.getElementById ("answer2");
+var answer3El = document.getElementById ("answer3");
+var answer4El = document.getElementById ("answer4");
+
+
 // calling variables and setting them
 headingEl.textContent = "Coding Quiz Challenge";
 
@@ -36,6 +42,7 @@ function countdownTimer() {
 }
 
 startButtonEl.addEventListener("click", countdownTimer);
+startButtonEl.addEventListener("click", nextQuestion);
 
 var currentQuestionIndex = 0;
 
@@ -81,15 +88,11 @@ function nextQuestion(){
     var currentQuestion = arrayOfQuestions[currentQuestionIndex]
     mainEl.innerHTML= "";
     var questionEl = document.createElement("h2");
-    questionEl.textContent = currentQuestionIndex.question;
-    var answer1El = document.createElement ("button");
-    answer1El.textContent= currentQuestionIndex.answer1;
-    var answer2El = document.createElement ("button");
-    answer2El.textContent= currentQuestionIndex.answer2;
-    var answer3El = document.createElement ("button");
-    answer3El.textContent= currentQuestionIndex.answer3;
-    var answer4El = document.createElement ("button");
-    answer4El.textContent= currentQuestionIndex.answer4;
+    questionEl.textContent = currentQuestion.question;
+    answer1El.textContent= currentQuestion.answer1;
+    answer2El.textContent= currentQuestion.answer2;
+    answer3El.textContent= currentQuestion.answer3;
+    answer4El.textContent= currentQuestion.answer4;
 
     mainEl.append(questionEl);
     mainEl.append(answer1El);
@@ -97,4 +100,23 @@ function nextQuestion(){
     mainEl.append(answer3El);
     mainEl.append(answer4El);
 }
-nextQuestion();
+// Event listeners
+answer1El.addEventListener("click", function(){
+    console.log("clicked")
+    currentQuestionIndex ++
+    nextQuestion();
+});
+answer2El.addEventListener("click", function(){
+    console.log("clicked")
+    currentQuestionIndex ++
+    nextQuestion();
+});
+answer3El.addEventListener("click", function(){
+    console.log("clicked")
+    currentQuestionIndex ++
+    nextQuestion();
+});
+answer4El.addEventListener("click", function(){
+    currentQuestionIndex ++
+    nextQuestion();
+});
