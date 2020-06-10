@@ -12,9 +12,10 @@
 
 // variables I need 
 var headingEl = document.getElementById("heading");
+var pEl= document.getElementById("mainParagraph");
 var timerEl = document.getElementById ("timer");
 var secondsLeft = 60;
-
+var startButtonEl = document.getElementById("startButton")
 // calling variables and setting them 
 headingEl.textContent = "Coding Quiz Challenge"
 
