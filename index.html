@@ -14,7 +14,7 @@
   </head>
   <header>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm">
         <div id="highscores">View Highscores</div>
         <div id="timer"></div>
       </div>
@@ -23,14 +23,22 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-sm text-center">
-          <h1 id="heading"></h1>
+        <div class="col-sm text-center" id="mainElement">
+          <h1 id="heading">Coding Quiz Challenge</h1>
           <p id="mainParagraph">
             Try to answer the following code-related questions within the time
             limit. Keep in mind that incorrect answers will penalize your
             score/time by 10 seconds!
           </p>
-          <button type="button" class="btn btn-primary" id="startButton">Start Quiz</button>
+          <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary" id="startButton">
+              Start Quiz
+            </button>
+            <button id="answer1" class="btn btn-primary"></button>
+            <button id="answer2" class="btn btn-primary"></button>
+            <button id="answer3" class="btn btn-primary"></button>
+            <button id="answer4" class="btn btn-primary"></button>
+          </div>
         </div>
       </div>
     </div>
