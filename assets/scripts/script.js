@@ -23,8 +23,9 @@ var answer3El = document.getElementById ("answer3");
 var answer4El = document.getElementById ("answer4");
 var invisiblebBtnEl= document.querySelectorAll(".invisibleBtn");
 var answerButtonEl = document.querySelectorAll(".answerButton");
-var correctAnswer= "";
-var user = "";
+var scoreEl= document.getElementById ("highScoreLink")
+// var correctAnswer= "";
+// var user = "";
 
 // calling variables and setting them
 headingEl.textContent = "Coding Quiz Challenge";
@@ -38,6 +39,8 @@ function countdownTimer() {
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
+      window.location.href= "assets/highScore.html";
+
       console.log("times up");
       // this will end the timer and bring us to the all done page
     }
@@ -93,7 +96,7 @@ var arrayOfQuestions = [
 ];
 // function to move through the array
 function nextQuestion(){
-  console.log(answerButtonEl);
+  // console.log(answerButtonEl);
     var currentQuestion = arrayOfQuestions[currentQuestionIndex]
     invisiblebBtnEl .forEach(function(button){
       button.style.visibility="visible";
@@ -131,17 +134,17 @@ answer4El.addEventListener("click", function(){
     nextQuestion();
 });
 
-answerButtonEl.addEventListener("click", function(){
-  var correctAnswer= arrayOfQuestions [0].answer3
-  var user = answer1El. innerText
-  console.log (correctAnswer);
-  console.log (user);
-  if( correctAnswer !== user){
-    secondsLeft += -10
-  } 
-    currentQuestionIndex ++
-    nextQuestion();
-})
+// answerButtonEl.addEventListener("click", function(){
+//   var correctAnswer= arrayOfQuestions [0].answer3
+//   var user = answer1El. innerText
+//   console.log (correctAnswer);
+//   console.log (user);
+//   if( correctAnswer !== user){
+//     secondsLeft += -10
+//   } 
+//     currentQuestionIndex ++
+//     nextQuestion();
+// })
 //tha buttons are all saved in the button el, and teh current question index is 0,
 //user clicks answer, check and compare the text of the button clicked to the text of the correct answer based off the index of the question
 // if they match, move through the index to the next question
