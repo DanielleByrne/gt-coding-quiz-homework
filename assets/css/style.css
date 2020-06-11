@@ -20,3 +20,7 @@ p{
 #timer{
     float: right;
 }
+
+.invisibleBtn{
+    visibility: hidden;
+}

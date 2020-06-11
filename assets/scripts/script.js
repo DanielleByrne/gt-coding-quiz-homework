@@ -21,7 +21,11 @@ var answer1El = document.getElementById("answer1");
 var answer2El = document.getElementById ("answer2");
 var answer3El = document.getElementById ("answer3");
 var answer4El = document.getElementById ("answer4");
-
+var invisiblebBtnEl= document.querySelectorAll(".invisibleBtn");
+var answerButtonEl = document.querySelectorAll(".answerButton");
+var scoreEl= document.getElementById ("highScoreLink")
+// var correctAnswer= "";
+// var user = "";
 
 // calling variables and setting them
 headingEl.textContent = "Coding Quiz Challenge";
@@ -35,6 +39,8 @@ function countdownTimer() {
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
+      window.location.href= "assets/highScore.html";
+
       console.log("times up");
       // this will end the timer and bring us to the all done page
     }
@@ -53,6 +59,7 @@ var arrayOfQuestions = [
     answer2: "2. Booleans",
     answer3: "3. Alerts",
     answer4: "4. Numbers",
+    correct: "3. Alerts",
   },
   {
     question: "The condition in an if/else statement is enclosed within",
@@ -60,13 +67,15 @@ var arrayOfQuestions = [
     answer2: "2. Curly Braces",
     answer3: "3. Parenthesis",
     answer4: "4. Square Brackets",
+    correct: "2. Curly Braces",
   },
   {
     question: "Arrays in JavaScript can be used to store ___.",
-    answer1: "1. Numbers ans Strings",
+    answer1: "1. Numbers and Strings",
     answer2: "2. Other Arrays",
     answer3: "3. Booleans",
     answer4: "4. All of the Above",
+    correct: "4. All of the Above",
   },
   {
     question: "String values must be enclosed within ___ when being assigned to variables",
@@ -74,6 +83,7 @@ var arrayOfQuestions = [
     answer2: "2. Curly Braces",
     answer3: "3. Quotes",
     answer4: "4. Paranthesis",
+    correct: "3. Quotes",
   },
   {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -81,11 +91,16 @@ var arrayOfQuestions = [
     answer2: "2. Terminal/Bash",
     answer3: "3. For Loops",
     answer4: "4. Console.log",
+    correct: "4. Console.log",
   },
 ];
-
+// function to move through the array
 function nextQuestion(){
+  // console.log(answerButtonEl);
     var currentQuestion = arrayOfQuestions[currentQuestionIndex]
+    invisiblebBtnEl .forEach(function(button){
+      button.style.visibility="visible";
+    });
     mainEl.innerHTML= "";
     var questionEl = document.createElement("h2");
     questionEl.textContent = currentQuestion.question;
@@ -99,20 +114,18 @@ function nextQuestion(){
     mainEl.append(answer2El);
     mainEl.append(answer3El);
     mainEl.append(answer4El);
+
 }
 // Event listeners
 answer1El.addEventListener("click", function(){
-    console.log("clicked")
     currentQuestionIndex ++
     nextQuestion();
 });
 answer2El.addEventListener("click", function(){
-    console.log("clicked")
     currentQuestionIndex ++
     nextQuestion();
 });
 answer3El.addEventListener("click", function(){
-    console.log("clicked")
     currentQuestionIndex ++
     nextQuestion();
 });
@@ -120,3 +133,22 @@ answer4El.addEventListener("click", function(){
     currentQuestionIndex ++
     nextQuestion();
 });
+
+// answerButtonEl.addEventListener("click", function(){
+//   var correctAnswer= arrayOfQuestions [0].answer3
+//   var user = answer1El. innerText
+//   console.log (correctAnswer);
+//   console.log (user);
+//   if( correctAnswer !== user){
+//     secondsLeft += -10
+//   } 
+//     currentQuestionIndex ++
+//     nextQuestion();
+// })
+//tha buttons are all saved in the button el, and teh current question index is 0,
+//user clicks answer, check and compare the text of the button clicked to the text of the correct answer based off the index of the question
+// if they match, move through the index to the next question
+
+
+// tried having an if/else for when the button is clicked at the index where it's wrong but that didn't do anything, also tried putting the event listener inside the if/else statement
+// i need to access every index and say if they clicked the right answer or if they clicked the wrong answer
