@@ -19,8 +19,14 @@ p{
 
 #timer{
     float: right;
+    margin-right: 20px;
 }
 
 .invisibleBtn{
     visibility: hidden;
+    margin: 10px;
+    margin-top: 60px;
+}
+h2{
+    margin-top: 100px;
 }
