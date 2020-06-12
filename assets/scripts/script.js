@@ -1,16 +1,5 @@
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
 
-// variables I need
+// Variables
 var headingEl = document.getElementById("heading");
 var pEl = document.getElementById("mainParagraph");
 var timerEl = document.getElementById("timer");
@@ -22,32 +11,30 @@ var answer2El = document.getElementById("answer2");
 var answer3El = document.getElementById("answer3");
 var answer4El = document.getElementById("answer4");
 var invisiblebBtnEl = document.querySelectorAll(".invisibleBtn");
-var answerButtonEl = document.querySelectorAll(".answerButton");
 var scoreEl = document.getElementById("highScoreLink");
-// var userInitialsEl = document.getElementById("userInitials");
-// var correctAnswer= ""; attempting to get right/ wrong answers
-// var user = ""; attempting to get right/ wrong answers
 
-// timer
+// Timer
 function countdownTimer() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timerEl.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0 ||currentQuestionIndex >=4 ) {
+    if (secondsLeft === 0 || currentQuestionIndex >= 4) {
       clearInterval(timerInterval);
       window.location.href = "assets/highScore.html";
-      console.log("times up");
-      // this will end the timer and bring us to the high score page
     }
   }, 1000);
 }
+// Event Listeners to start the quiz
+startButtonEl.addEventListener("click", function () {
+  countdownTimer();
+});
+startButtonEl.addEventListener("click", function () {
+  nextQuestion();
+});
 
-startButtonEl.addEventListener("click", countdownTimer);
-startButtonEl.addEventListener("click", nextQuestion);
-
+// Questions and Answers
 var currentQuestionIndex = 0;
-
 var arrayOfQuestions = [
   {
     question: "Commonly used data types DO NOT include",
@@ -92,9 +79,9 @@ var arrayOfQuestions = [
     correct: "4. Console.log",
   },
 ];
-// function to move through the array
+// Function to move through array and get next question
 function nextQuestion() {
-  var currentQuestion = arrayOfQuestions[currentQuestionIndex]
+  var currentQuestion = arrayOfQuestions[currentQuestionIndex];
   invisiblebBtnEl.forEach(function (button) {
     button.style.visibility = "visible";
   });
@@ -112,76 +99,57 @@ function nextQuestion() {
   mainEl.append(answer3El);
   mainEl.append(answer4El);
 }
-
-
-// function getAnswer(){
-//   if (currentQuestionIndex <=4){
-// var userAnswer= (arrayOfQuestions[currentQuestionIndex].questionText);
-// checkAnswer(userAnswer)
-//   }
-//   else{
-//     window.location.href = "assets/highScore.html";
-//   }
-// }
-
-// function checkAnswer(userAnswer){
-//   if(userAnswer !== arrayOfQuestions[currentQuestionIndex].correct){
-//     secondsLeft += -10;
-//   }
-//   currentQuestionIndex++;
-//   nextQuestion();
-// }
-
-// high scores page 
-// function userScore() {
-//   var userInitialsEl = document.getElementById("userInitials").value;
-//   console.log(userInitialsEl);
-// }
-
-
-// Event listeners
+// Event listeners for each button
 answer1El.addEventListener("click", function () {
-  currentQuestionIndex++;
-  nextQuestion();
+  userAnswer = event.target.textContent;
+  if (userAnswer === arrayOfQuestions[currentQuestionIndex].correct) {
+    console.log("correct");
+    currentQuestionIndex++;
+    nextQuestion();
+  } else {
+    alert("incorrect!");
+    secondsLeft = secondsLeft - 10;
+    currentQuestionIndex++;
+    nextQuestion();
+  }
 });
 answer2El.addEventListener("click", function () {
-  currentQuestionIndex++;
-  nextQuestion();
+  userAnswer = event.target.textContent;
+  if (userAnswer === arrayOfQuestions[currentQuestionIndex].correct) {
+    console.log("correct");
+    currentQuestionIndex++;
+    nextQuestion();
+  } else {
+    alert("incorrect!");
+    secondsLeft = secondsLeft - 10;
+    currentQuestionIndex++;
+    nextQuestion();
+  }
 });
 answer3El.addEventListener("click", function () {
-  currentQuestionIndex++;
-  nextQuestion();
+  userAnswer = event.target.textContent;
+  if (userAnswer === arrayOfQuestions[currentQuestionIndex].correct) {
+    console.log("correct");
+    currentQuestionIndex++;
+    nextQuestion();
+  } else {
+    alert("incorrect!");
+    secondsLeft = secondsLeft - 10;
+    currentQuestionIndex++;
+    nextQuestion();
+  }
 });
 answer4El.addEventListener("click", function () {
-  currentQuestionIndex++;
-  nextQuestion();
+  userAnswer = event.target.textContent;
+  if (userAnswer === arrayOfQuestions[currentQuestionIndex].correct) {
+    console.log("correct");
+    currentQuestionIndex++;
+    nextQuestion();
+  } else {
+    alert("incorrect!");
+    secondsLeft = secondsLeft - 10;
+    currentQuestionIndex++;
+    nextQuestion();
+  }
 });
 
-// answer1El.addEventListener("click", function(){
-//   var correctAnswer= arrayOfQuestions [0].answer3;
-//   if (correctAnswer !== userAnswer){
-//     console.log (event.target.textContent);
-//   }
-// })
- 
-//   if( correctAnswer !== user){
-//     secondsLeft += -10;
-//   } 
-//     currentQuestionIndex ++
-//     nextQuestion();
-// })
-
-
-// high scores page 
-// userInitialsEl.addEventListener("click", function () {
-//   event.preventDefault();
-//   alert("you hit submit");
-// });
-
-
-//tha buttons are all saved in the button el, and teh current question index is 0,
-//user clicks answer, check and compare the text of the button clicked to the text of the correct answer based off the index of the question
-// if they match, move through the index to the next question
-
-// tried having an if/else for when the button is clicked at the index where it's wrong but that didn't do anything, also tried putting the event listener inside the if/else statement
-// i need to access every index and say if they clicked the right answer or if they clicked the wrong answer
