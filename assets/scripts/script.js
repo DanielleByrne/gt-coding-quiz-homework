@@ -19,7 +19,7 @@ function countdownTimer() {
     secondsLeft--;
     timerEl.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0 || currentQuestionIndex >= 4) {
+    if (secondsLeft === 0 || currentQuestionIndex >= 5) {
       clearInterval(timerInterval);
       window.location.href = "assets/highScore.html";
     }
@@ -50,7 +50,7 @@ var arrayOfQuestions = [
     answer2: "2. Curly Braces",
     answer3: "3. Parenthesis",
     answer4: "4. Square Brackets",
-    correct: "2. Curly Braces",
+    correct: "3. Parenthesis",
   },
   {
     question: "Arrays in JavaScript can be used to store ___.",
